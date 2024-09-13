@@ -12,14 +12,20 @@ public class indexController {
 
     //?name=
     @RequestMapping("/index")
-    public ModelAndView index2(@RequestParam String name) {
+    public ModelAndView index(@RequestParam String name ) {
 
-        ModelAndView modelAndView = new ModelAndView("index");
+        if(name==null || name.isEmpty()){
+            return new ModelAndView("index");
+        }
+        else{
+            ModelAndView modelAndView = new ModelAndView("index");
 
-        Map<String, Object> model = modelAndView.getModel();
+            Map<String, Object> model = modelAndView.getModel();
 
-        model.put("name", name);
+            model.put("name", name);
 
-        return modelAndView;
+            return modelAndView;
+        }
+
     }
 }
